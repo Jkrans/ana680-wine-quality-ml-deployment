@@ -27,7 +27,6 @@ def load_data() -> pd.DataFrame:
     # Combine red + white wine rows
     df = pd.concat([red, white], ignore_index=True)
 
-    # Basic sanity check
     if "quality" not in df.columns:
         raise ValueError("Expected target column 'quality' not found in dataset.")
 

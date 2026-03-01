@@ -6,6 +6,8 @@ This project trains a linear regression model on the UCI Wine Quality dataset an
 GitHub: https://github.com/Jkrans/ana680-wine-quality-ml-deployment
 
 ## Live Application (Heroku)
+Front end: 
+https://jk-wine-quality-api-0f73a9de9776.herokuapp.com/
 Health Check Endpoint:
 https://jk-wine-quality-api-0f73a9de9776.herokuapp.com/health
 

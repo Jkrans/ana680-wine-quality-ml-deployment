@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wine Quality Predictor</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f4f6f8; margin:0; padding:0; }
+    .card { width:520px; margin:60px auto; background:#fff; padding:24px; border-radius:12px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+    h2 { margin:0 0 10px; color:#222; }
+    p { margin:0 0 18px; color:#555; }
+    label { display:block; margin:10px 0 6px; font-weight:bold; color:#333; }
+    input { width:100%; padding:10px; border:1px solid #ccc; border-radius:8px; box-sizing:border-box; }
+    button { width:100%; margin-top:18px; padding:12px; border:0; border-radius:10px;
+             background:#2563eb; color:white; font-size:16px; cursor:pointer; }
+    button:hover { background:#1d4ed8; }
+    .result { margin-top:18px; padding:12px; border-radius:10px; background:#e8f0ff; color:#123; text-align:center; }
+    .note { font-size:12px; color:#777; margin-top:10px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Wine Quality Predictor</h2>
+    <p>Enter the 11 features to predict wine quality (0–10).</p>
+
+    <form action="/predict" method="POST">
+      <div class="grid">
+        <div>
+          <label>fixed acidity</label>
+          <input name="fixed acidity" type="number" step="any" required>
+        </div>
+        <div>
+          <label>volatile acidity</label>
+          <input name="volatile acidity" type="number" step="any" required>
+        </div>
+        <div>
+          <label>citric acid</label>
+          <input name="citric acid" type="number" step="any" required>
+        </div>
+        <div>
+          <label>residual sugar</label>
+          <input name="residual sugar" type="number" step="any" required>
+        </div>
+        <div>
+          <label>chlorides</label>
+          <input name="chlorides" type="number" step="any" required>
+        </div>
+        <div>
+          <label>free sulfur dioxide</label>
+          <input name="free sulfur dioxide" type="number" step="any" required>
+        </div>
+        <div>
+          <label>total sulfur dioxide</label>
+          <input name="total sulfur dioxide" type="number" step="any" required>
+        </div>
+        <div>
+          <label>density</label>
+          <input name="density" type="number" step="any" required>
+        </div>
+        <div>
+          <label>pH</label>
+          <input name="pH" type="number" step="any" required>
+        </div>
+        <div>
+          <label>sulphates</label>
+          <input name="sulphates" type="number" step="any" required>
+        </div>
+        <div>
+          <label>alcohol</label>
+          <input name="alcohol" type="number" step="any" required>
+        </div>
+      </div>
+
+      <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is defined %}
+        <div class="result">
+            Predicted quality: <b>{{ "%.2f"|format(prediction) }}</b>
+        </div>
+    {% endif %}
+
+    <div class="note">
+      Tip: You can also POST JSON to <code>/predict</code>.
+    </div>
+  </div>
+</body>
+</html>
